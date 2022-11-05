@@ -19,8 +19,10 @@ public class UsuarioDto implements Serializable {
     private final String gender;
     private final Boolean check1;
     private final Boolean check2;
+    private final Boolean validateLogin;
 
-    public UsuarioDto(Long id, String email, String emailConfirm, String password, String name, LocalDate birthdate, String gender, Boolean check1, Boolean check2) {
+    public UsuarioDto(Long id, String email, String emailConfirm, String password, String name, LocalDate birthdate, String gender, Boolean check1, Boolean check2, Boolean validateLogin) {
+        this.validateLogin = validateLogin;
         this.id = id;
         this.email = email;
         this.emailConfirm = emailConfirm;
@@ -42,6 +44,20 @@ public class UsuarioDto implements Serializable {
         this.gender = null;
         this.check1 = null;
         this.check2 = null;
+        this.validateLogin = null;
+    }
+
+    public UsuarioDto(Boolean validateLogin) {
+        this.id = null;
+        this.email = null;
+        this.emailConfirm = null;
+        this.password = null;
+        this.name = null;
+        this.birthdate = null;
+        this.gender = null;
+        this.check1 = null;
+        this.check2 = null;
+        this.validateLogin = validateLogin;
     }
 
 }

@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "playlist")
@@ -31,5 +32,9 @@ public class Playlist {
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
+
+    @ManyToMany
+    @JoinTable
+    private List<Musica> musicas;
 
 }

@@ -25,13 +25,13 @@ public class CategoriaController {
         this.playlistRepository = playlistRepository;
     }
 
-    @GetMapping("/categorias")
+    @GetMapping("/categoria/")
     @CrossOrigin(originPatterns = "*localhost*")
     public List<CategoriaDto> getCategorias() {
         List<CategoriaDto> categoriasResponse = new ArrayList<>();
         List<Categoria> categorias = this.categoriaRepository.findAll();
         for (Categoria categoria : categorias) {
-            List<Playlist> playlists = this.playlistRepository.findByCategoria_Id(categoria.getId());
+            List<Playlist> playlists = this.playlistRepository.findByUser_IdAndCategoria_Id( 1L, categoria.getId());
             List<PlaylistDto> playlistDtoList = new ArrayList<>();
             for (Playlist playlist : playlists) {
                 PlaylistDto playlistDto = new PlaylistDto(

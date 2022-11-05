@@ -10,4 +10,10 @@ import java.util.Set;
 public interface PlaylistRepository extends CrudRepository<Playlist, Long> {
     List<Playlist> findByCategoria_Id(@NonNull Long id);
 
+    List<Playlist> findByUser_Id(Long id);
+
+    List<Playlist> findByUser_IdAndCategoria_Id(Long idusuario, Long idcategoria);
+
+
+
 }

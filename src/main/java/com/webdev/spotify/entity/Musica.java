@@ -23,9 +23,4 @@ public class Musica {
 
     private String src;
 
-    @ManyToOne
-    @JoinColumn(name = "playlist_id")
-    private Playlist playlist;
-
-
 }
