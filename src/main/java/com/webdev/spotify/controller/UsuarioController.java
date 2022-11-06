@@ -27,19 +27,18 @@ public class UsuarioController {
     }
 
     @PostMapping("/users/{idusuario}")
-    public Usuario cadastrarUsuario(@RequestBody Usuario usuario, @PathVariable Long idusuario) {
+    public Usuario cadastrarUsuario(@RequestBody Usuario usuario) {
         return this.usuarioRepository.save(usuario);
     }
 
     @PatchMapping("/users/{idusuario}")
-    public Usuario alterarUsuario(@RequestBody Usuario usuario, @PathVariable Long idusuario) {
+    public Usuario alterarUsuario(@RequestBody Usuario usuario) {
         return this.usuarioRepository.save(usuario);
     }
 
     @PostMapping("/users/validate/")
     public UsuarioDto validarLogin(@RequestBody LoginDto loginDto) {
         Optional<Usuario> usuarioOptional = this.usuarioRepository.findByEmailIgnoreCase(loginDto.getEmail());
-        UsuarioDto usuarioDto = null;
         Usuario usuario;
         if (usuarioOptional.isPresent()) {
             usuario = usuarioOptional.get();
