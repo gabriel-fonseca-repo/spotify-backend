@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/musicas")
-@CrossOrigin(originPatterns = "*localhost*")
+@CrossOrigin
 public class MusicaController {
 
     private final MusicaRepository musicaRepository;
@@ -21,7 +21,6 @@ public class MusicaController {
     }
 
     @GetMapping("/")
-    @CrossOrigin(originPatterns = "*localhost*")
     public List<Musica> getMusicas() {
         return this.musicaRepository.findAll();
     }

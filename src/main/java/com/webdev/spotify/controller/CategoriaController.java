@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class CategoriaController {
 
     private final CategoriaRepository categoriaRepository;
@@ -26,7 +27,6 @@ public class CategoriaController {
     }
 
     @GetMapping("/categoria/")
-    @CrossOrigin(originPatterns = "*localhost*")
     public List<CategoriaDto> getCategorias() {
         List<CategoriaDto> categoriasResponse = new ArrayList<>();
         List<Categoria> categorias = this.categoriaRepository.findAll();

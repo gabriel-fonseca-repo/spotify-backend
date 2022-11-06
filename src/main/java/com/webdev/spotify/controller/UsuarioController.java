@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 public class UsuarioController {
 
     private final UsuarioRepository usuarioRepository;
@@ -19,7 +20,6 @@ public class UsuarioController {
     }
 
     @GetMapping("/users/{email}/")
-    @CrossOrigin(originPatterns = "*localhost*")
     public EmailTakenDto checarEmailJaCadastrado(@PathVariable String email) {
         EmailTakenDto emailTakenDto = new EmailTakenDto();
         emailTakenDto.setTaken(usuarioRepository.countByEmailIgnoreCase(email) > 0);
@@ -27,19 +27,16 @@ public class UsuarioController {
     }
 
     @PostMapping("/users/{idusuario}")
-    @CrossOrigin(originPatterns = "*localhost*")
     public Usuario cadastrarUsuario(@RequestBody Usuario usuario, @PathVariable Long idusuario) {
         return this.usuarioRepository.save(usuario);
     }
 
     @PatchMapping("/users/{idusuario}")
-    @CrossOrigin(originPatterns = "*localhost*")
     public Usuario alterarUsuario(@RequestBody Usuario usuario, @PathVariable Long idusuario) {
         return this.usuarioRepository.save(usuario);
     }
 
     @PostMapping("/users/validate/")
-    @CrossOrigin(originPatterns = "*localhost*")
     public UsuarioDto validarLogin(@RequestBody LoginDto loginDto) {
         Optional<Usuario> usuarioOptional = this.usuarioRepository.findByEmailIgnoreCase(loginDto.getEmail());
         UsuarioDto usuarioDto = null;
